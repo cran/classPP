@@ -1,0 +1,10 @@
+PPindex.class	find PPindex value
+PPindex.LDA	calculate LDA index value
+PPindex.Lp	calculate Lr index value
+PPindex.PDA	calculate PDA index value
+PP.optimize.ramdom	optimize with random search
+PP.optimize.anneal	optimize with simulated annealing
+PP.optimize.Huber	optimize with Huber's method	
+PP.optimize.plot	make plot after optimizing
+PP.tree			make PP tree structure
+PP.classify		estimate classifier after fitting
