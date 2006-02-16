@@ -5,7 +5,7 @@
 #                 rep2<-2
 ####################################################
 
-PP.Tree<-function(PPmethod,i.class,i.data,weight=TRUE,r=NULL,lambda=NULL,...)
+PP.Tree<-function(PPmethod,i.class,i.data,weight=TRUE,r=NULL,lambda=NULL)
 {
    i.data<-as.matrix(i.data);
  
@@ -88,7 +88,7 @@ Find.proj<-function(i.class,i.data,PPmethod,r,lambda,...)
 }
 
 ##################
-Tree.construct<-function(i.class,i.data,Tree.Struct, id,rep,rep1,rep2,Alpha.Keep,C.Keep,PPmethod,r=NULL,lambda=NULL,...)
+Tree.construct<-function(i.class,i.data,Tree.Struct, id,rep,rep1,rep2,Alpha.Keep,C.Keep,PPmethod,r=NULL,lambda=NULL)
 { 
  i.class<-as.integer(i.class)
   n<-nrow(i.data)
@@ -177,7 +177,7 @@ Tree.construct<-function(i.class,i.data,Tree.Struct, id,rep,rep1,rep2,Alpha.Keep
 #                  IOindex<-(1,1,1,1,...,1)
 ##########################################################
 
-PP.classify<-function(test.data,true.class,Tree.result,Rule,...)
+PP.classify<-function(test.data,true.class,Tree.result,Rule)
 {
    test.data<-as.matrix(test.data)
    true.class<-as.matrix(true.class); 

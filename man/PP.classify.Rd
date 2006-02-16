@@ -1,7 +1,7 @@
 \name{PP.classify}
 \title{Predict class for the test set and calculate prediction error}
 \usage{
-PP.classify(test.data, true.class, Tree.result, Rule,...) 
+PP.classify(test.data, true.class, Tree.result, Rule) 
 
 }
 \alias{PP.classify}
@@ -21,7 +21,6 @@ After finding tree structure, predict class for the test set and calculate predi
   3 - mean of max(left group) and min(right group)
 
   4 - weighted mean of max(left group) and min(right group)}
-  \item{...}{...}
 }
 
 \value{

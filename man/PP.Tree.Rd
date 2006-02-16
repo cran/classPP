@@ -1,7 +1,7 @@
 \name{PP.Tree}
 \title{Find PP tree structure}
 \usage{
-PP.Tree(PPmethod, i.class, i.data, weight = TRUE, r=NULL,lambda=NULL,...) 
+PP.Tree(PPmethod, i.class, i.data, weight = TRUE, r=NULL,lambda=NULL) 
 
 }
 \alias{PP.Tree}
@@ -21,7 +21,6 @@ Find tree structure using projection pursuit in each split.
   \item{weight}{weight flag using in LDA index}
   \item{r}{a parameter for \eqn{L_r} index}
   \item{lambda}{a parameter for PDA index}
- \item{...}{...}
 }
 
 \value{

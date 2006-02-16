@@ -1,5 +1,5 @@
-\name{ClassPP}
-\alias{ClassPP}
+\name{classPP}
+\alias{classPP}
 \title{Projection Pursuit for Supervised Classification}
 \description{
 This package is for projection pursuit method for supervised classification.

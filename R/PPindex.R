@@ -4,7 +4,7 @@
 # PP index calculation
 #
 #############################################
-PPindex.class<-function(PPmethod,data,class,weight=TRUE,r=NULL,lambda=NULL,...)
+PPindex.class<-function(PPmethod,data,class,weight=TRUE,r=NULL,lambda=NULL)
 {
  if(PPmethod =="LDA") 
       index<-PPindex.LDA(data,class,weight)
@@ -17,7 +17,7 @@ PPindex.class<-function(PPmethod,data,class,weight=TRUE,r=NULL,lambda=NULL,...)
   return(index)
 }
   
-PPindex.LDA<-function(data,class,weight=TRUE,...)
+PPindex.LDA<-function(data,class,weight=TRUE)
 {
   data<-as.matrix(data);
   class<-as.matrix(class);
@@ -50,7 +50,7 @@ PPindex.LDA<-function(data,class,weight=TRUE,...)
              class=as.integer(class), 
              as.integer(gname),
              ngroup=as.integer(ngroup),
-             index=as.double(val))
+             index=as.double(val),PACKAGE="classPP")
   else
    LDA  = .C("discriminant2", 
              as.integer(n),
@@ -60,12 +60,12 @@ PPindex.LDA<-function(data,class,weight=TRUE,...)
              class=as.integer(class), 
              as.integer(gname),
              ngroup=as.integer(ngroup),
-             index=as.double(val))
+             index=as.double(val),PACKAGE="classPP")
 
   return(LDA$index)
 }   
   
-PPindex.PDA<-function(data,class,lambda,...)
+PPindex.PDA<-function(data,class,lambda)
 {
   if(is.null(lambda)) 
    return("ERROR : You need to use parameter lambda !")
@@ -100,11 +100,11 @@ PPindex.PDA<-function(data,class,lambda,...)
              as.integer(gname),
              ngroup=as.integer(ngroup),
              index=as.double(val),
-             as.double(lambda))
+             as.double(lambda),PACKAGE="classPP")
   return(PDA$index)
 }   
 
-PPindex.Lp<-function(data,class,r,...)
+PPindex.Lp<-function(data,class,r)
 {
   if(is.null(r)) 
    return("ERROR : You need to select parameter r !")
@@ -140,12 +140,12 @@ PPindex.Lp<-function(data,class,r,...)
              as.integer(gname),
              ngroup=as.integer(ngroup),
              index=as.double(val),
-             as.integer(r))
+             as.integer(r),PACKAGE="classPP")
   return(LDA$index)
 }   
 
 ##########################################################
-PP.optimize.random<-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,temp=1,r=NULL,lambda=NULL,weight=TRUE,...)
+PP.optimize.random<-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,temp=1,r=NULL,lambda=NULL,weight=TRUE)
 {
   data<-as.matrix(data);
   class<-as.matrix(class);
@@ -225,7 +225,7 @@ PP.optimize.random<-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,t
              index=as.double(val),
              proj=as.double(proj),
              as.integer(r),
-             as.double(lambda))
+             as.double(lambda),PACKAGE="classPP")
   index.best<-Opt$index
   if(pp !=p)
   { proj.best<-matrix(rep(0,pp*projdim),ncol=projdim)
@@ -233,11 +233,12 @@ PP.optimize.random<-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,t
   }
   else
     proj.best<-matrix(Opt$proj,ncol=projdim)
-  return(index.best,proj.best)
+  result<-list(index.best=index.best,proj.best=proj.best)
+  return(result)
 }
 
 #########################
-PP.optimize.anneal<-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.999,temp=1,energy=0.01,r=NULL,lambda=NULL,weight=TRUE,...)
+PP.optimize.anneal<-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.999,temp=1,energy=0.01,r=NULL,lambda=NULL,weight=TRUE)
 {
   data<-as.matrix(data);
   class<-as.matrix(class);
@@ -310,7 +311,7 @@ PP.optimize.anneal<-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.999,
              proj=as.double(proj),
              as.double(energy),
              as.integer(r),
-             as.double(lambda))
+             as.double(lambda),PACKAGE="classPP")
   index.best<-Opt$index
   if(pp !=p)
   { proj.best<-matrix(rep(0,pp*projdim),ncol=projdim)
@@ -318,12 +319,12 @@ PP.optimize.anneal<-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.999,
   }
   else
     proj.best<-matrix(Opt$proj,ncol=projdim)
-
-  return(index.best,proj.best)
+  result<-list(index.best=index.best,proj.best=proj.best)
+  return(result)
 }
 
 ###############
-PP.optimize.Huber <-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,temp=1,r=NULL,lambda=NULL,weight=TRUE,...)
+PP.optimize.Huber <-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,temp=1,r=NULL,lambda=NULL,weight=TRUE)
 {
    
 
@@ -396,7 +397,7 @@ PP.optimize.Huber <-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,t
              projdim=as.integer(projdim),
              index=as.double(val),
              proj=as.double(proj),
-             as.integer(r))
+             as.integer(r),PACKAGE="classPP")
   index.best<-Opt$index
   if(pp !=p)
   { proj.best<-matrix(rep(0,pp*projdim),ncol=projdim)
@@ -404,8 +405,8 @@ PP.optimize.Huber <-function(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,t
   }
   else
     proj.best<-matrix(Opt$proj,ncol=projdim)
-
-  return(index.best,proj.best)
+  result<-list(index.best=index.best,proj.best=proj.best)
+  return(result)
 }
 
 #########################

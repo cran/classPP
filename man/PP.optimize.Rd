@@ -1,9 +1,9 @@
 \name{PP.optimize}
 \title{Find optimal Projection by maximizing selected PPindex}
 \usage{
-PP.optimize.random(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,temp=1,r=NULL,lambda=NULL,weight=TRUE,...)
-PP.optimize.anneal(PPmethod,projdim,data,class,std=TRUE,cooling=0.999,temp=1,energy=0.01,r=NULL,lambda=NULL,weight=TRUE,...)
-PP.optimize.Huber(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,temp=1,r=NULL,lambda=NULL,weight=TRUE,...)
+PP.optimize.random(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,temp=1,r=NULL,lambda=NULL,weight=TRUE)
+PP.optimize.anneal(PPmethod,projdim,data,class,std=TRUE,cooling=0.999,temp=1,energy=0.01,r=NULL,lambda=NULL,weight=TRUE)
+PP.optimize.Huber(PPmethod,projdim,data,class,std=TRUE,cooling=0.99,temp=1,r=NULL,lambda=NULL,weight=TRUE)
 PP.optimize.plot(PP.opt, data, class,std=TRUE)
 }
 \alias{PP.optimize.random}
@@ -34,7 +34,6 @@ Find optimal projection using PP index.
   \item{r}{a parameter for \eqn{L_r} index}
   \item{lambda}{a parameter for PDA index}
   \item{PP.opt}{the optimal projection}
-  \item{...}{...}
 }
 
 \value{

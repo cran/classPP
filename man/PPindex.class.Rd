@@ -1,10 +1,10 @@
 \name{PPindex.class}
 \title{Calculate Projection Pursuit index}
 \usage{
- PPindex.class(PPmethod,data,class,weight=TRUE,r=NULL,lambda=NULL,...)
- PPindex.LDA(data,class, weight = TRUE, ...) 
- PPindex.Lp(data, class, r, ...) 
- PPindex.PDA(data,class,lambda,...)
+ PPindex.class(PPmethod,data,class,weight=TRUE,r=NULL,lambda=NULL)
+ PPindex.LDA(data,class, weight = TRUE) 
+ PPindex.Lp(data, class, r) 
+ PPindex.PDA(data,class,lambda)
 }
 \alias{PPindex.class}
 \alias{PPindex.LDA}
@@ -27,7 +27,6 @@ For given projected data and class information, calculate projeciton pursuit ind
   \item{weight}{weight flag using in LDA index}
   \item{r}{a parameter for \eqn{L^r} index}
   \item{lambda}{a parameter for PDA index} 
- \item{...}{...}
 
 }
 
